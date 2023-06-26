@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="Lcontainer">
+        <h1>Login</h1>
+        <h6>Don't have an account? <a href="/redirect">sign-in</a></h6>
+
+        <!--Form to login-->
+        <form method="post" action="/check">
+            <!--Enter email-->
+            <div class="details">
+                <i class="fa fa-envelope icon"></i>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <!--Enter password-->
+            <div class="details">
+                <i class="fa fa-key icon"></i>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+                <input type="checkbox" onclick="showPassword()">
+                <label for="checkbox">Show password</label>
+            </div>
+            
+             <!--Submitting the form-->
+            <div class="submit">
+                <input type="submit" value="Login">
+            </div>            
+        </form>
+    </div>
+    <script>
+        /*showing password when user clicks show password checkbox*/
+        function showPassword(){
+             var x = document.getElementById("password");
+             if (x.type === "password") {
+                 x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

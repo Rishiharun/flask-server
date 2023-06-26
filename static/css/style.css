@@ -1,0 +1,176 @@
+/*import poppins font from google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+/*Disabling increment and decrement buttons in number type fields */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/*designing the body*/
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffb347, #ffcc33)no-repeat;
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    margin: 20px 0px;
+}
+
+h1{
+    font-size: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+/*small line after welcome note*/
+h1::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background: linear-gradient(135deg, #ffb347, #ffcc33);
+}
+
+form{
+    margin-top: 20px;
+}
+
+.details{
+    margin-bottom: 25px;
+}
+
+.details input,select{
+    width: 100%;
+    height: 30px;
+    font-size: 15px;
+    background-color: rgb(236, 231, 224);
+    border: 0;
+    border-radius: 5px;
+}
+
+input[type="checkbox"]{
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    accent-color: #ffb347;
+}
+
+label[for="checkbox"]{
+    font-size: 12px;
+    font-weight: 550;
+}
+
+.details textarea{
+    background-color: rgb(236, 231, 224);
+    border: 0;
+    border-radius: 5px;
+}
+
+.details input,select:focus{
+    outline: 0;
+}
+
+.details textarea:focus{
+    outline: 0;
+}
+
+.submit input{
+    height: 40px;
+    width: 30%;
+    border: 0;
+    background: #ffb347;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.submit input:hover{
+    background: linear-gradient(135deg, #ffb347, #ffcc33);
+    
+}
+
+a:link{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #ffb347;
+}
+
+/*CSS for login page*/
+.Lcontainer{
+    width: 30%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    margin: 170px 0px;
+}
+
+.Lcontainer input{
+    width: 80%;
+}
+
+.Lcontainer input[type="checkbox"]{
+    width: 15px;
+    margin-left: 30px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+.Lcontainer label{
+    font-size: 12px;
+}
+
+i{
+    background-color: #383633;
+    color: white;
+    padding: 5px 5px;
+}
+
+.Lcontainer .submit{
+    padding-left: 15%;
+}
+
+.Lcontainer h6{
+    margin-top: 2px;
+}
+
+
+/*style for view.html*/
+.Vcontainer{
+    max-width: 850px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    margin: 50px 0px;
+}
+
+.Vcontainer h1{
+    margin-bottom: 50px;
+}
+
+.Vcontainer h5{
+    margin-bottom: 25px;
+}
+
+/*Reused existing style for update.html*/
+

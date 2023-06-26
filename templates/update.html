@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Update</title>
+</head>
+<body>
+        <div class="container">
+        <!--Welcome note and requesting the user to register. If already having an account providing login URL -->
+        <h1>Edit profile</h1>
+        <h4>You can make changes to your profile below (Email not editable)</h4>
+        <h6> <a href="/login">Log out here</a></h6>
+
+        <!--Update student profile-->
+        <form id="update" action="/update" method="post">
+             <!--Record name of student-->
+             <div class="details">
+                <label for="fullname">Full name:</label>
+                <input type="text" name="fullname" id="fullname" value="{{ fullname }}">
+             </div>
+
+             <!--registration number of the student-->
+             <div class="details">
+                <label for="registration_number">Registration number:</label>
+                <input type="number" name="regnumber" min="1000" id="registration_number" value="{{ registration_number }}">
+             </div>
+
+
+             <!-- Email of the student-->
+             <div class="details">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" value="{{ email }}" disabled>
+             </div>
+
+             <!--password-->
+             <div class="details">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" value="{{ password }}">
+                <input type="checkbox" onclick="showPassword()">
+                <label for="checkbox">Show password</label>
+             </div>
+
+             <!--degree program of the student-->
+             <div class="details">
+                <label>Degree program:</label>
+                <label>{{ degree }}</label>
+                <select name="degree" id="degree">
+                    <option value="Bsc computer science and engineering">Bsc computer science and engineering</option>
+                    <option value="Bsc mechanical engineering">Bsc mechanical engineering</option>
+                    <option value="Bsc electrical engineering">Bsc electrical engineering</option>
+                    <option value="Bsc civil engineering">Bsc civil engineering</option>
+                </select>
+             </div>
+
+             <!--Contact number of the student-->
+             <div class="details">
+                <label for="contact">Contact number:</label>
+                <input type="tel" name="contact" pattern="07\d{8}" id="contact" value="{{ contact }}">
+             </div>
+        
+             <!--Introduction of the student-->
+             <div class="details">
+                <label for="introduction">Introduction about yourself:</label>
+                <textarea name="introduction" rows="4" cols="97" id="introduction">{{ introduction }}</textarea>   
+             </div>
+
+             <!--GPA of the student-->
+             <div class="details">
+                <label for="GPA">Current GPA:</label>
+                <input type="number" name="GPA" step="any" min ="0" max ="4" id="GPA" value="{{ gpa }}">   
+             </div>
+
+             <!--Student skills-->
+             <div class="details">
+                <label for="skills">Describe your skills:</label>
+                <textarea name="skills" rows="4" cols="97" id="skills">{{ skills }}</textarea>
+             </div>
+
+             <!--Submitting the changes-->
+             <div class="submit">
+                <input type="submit" value="Update">
+             </div>
+        </form>
+    </div>
+
+    <script>
+        /*showing password when user clicks show password checkbox*/
+        function showPassword(){
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+          }
+        }
+
+       document.getElementById('update').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fullname = document.getElementById('fullname').value;
+            const registration_number = document.getElementById('registration_number').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const degree = document.getElementById('degree').value;
+            const contact = document.getElementById('contact').value;
+            const introduction = document.getElementById('introduction').value;
+            const GPA = document.getElementById('GPA').value;
+            const skills = document.getElementById('skills').value;
+            
+            
+            
+            // Get form data
+            const formData = {
+                fullname: fullname ,
+                registration_number: Number(registration_number),
+                password: password,
+                degree: degree,
+                contact: contact,
+                introduction: introduction,
+                GPA: GPA,
+                skills: skills
+            };
+            
+
+            // Send PUT request using fetch
+            fetch('/update/'+ email, {
+                method: 'PUT',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+            console.log(formData);
+            alert('Profile updated successfully!');
+            })
+            .catch(function(error) {
+                alert('Something went wrong!');
+            });
+        });
+    </script>
+</body>
+</html>
